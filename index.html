@@ -1,83 +1,48 @@
 <!DOCTYPE html>
-
+<html lang="ja">
 <head>
-    <link rel="stylesheet" href="test.css">
-    <title>TEST AIRLINES</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真ギャラリー</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+        .gallery img { width: 200px; height: auto; cursor: pointer; transition: 0.3s; }
+        .gallery img:hover { transform: scale(1.05); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; }
+        .overlay img { width: 80%; max-width: 800px; height: auto; }
+    </style>
 </head>
-
-<header>
-    <div>TEST TEST</div>
-    <div>フライト&ツアー</div>
-    <div>マイレージ&TESTカード</div>
-    <div id="humMenu">
-        <input id="humCheck" type="checkbox">
-        <label id="humOpen" for="humCheck"><img src="menu.png" alt="メニュー" width="70" height="70"></label>
-        <label id="humClose" for="humCheck"></label>
-        <nav>
-            <ul class="inner">
-                <li><a href="test.html">・トップ</a></li>
-                <li><a href="login.html">・ログイン</a></li>
-                <li><a href="after_login.html">・ログイン後</a></li>
-                <li><a href="before_register.html">・登録前</a></li>
-                <li><a href="register.html">・登録フォーム</a></li>
-                <li><a href="after_register.html">・入力内容の確認</a></li>
-                <li><a href="after_register2.html">・登録確認</a></li>
-                <li><a href="check_member.html">・会員情報の確認</a></li>
-                <li><a href="fix_member.html">・会員情報の修正</a></li>
-                <li><a href="check_reserve.html">・予約情報の確認</a></li>
-                <li><a href="check_miles.html">・マイル残高の確認</a></li>
-            </ul>
-        </nav>
-    </div>
-    
-</header>
-
 <body>
-    <div class="log-regi">
-    <p class="login-register">
-    <div class="b">
-        <ul class="float">
-            <a href="login.html"><li class="log">ログイン</li></a>
-            <a href="before_register.html"><li class="regi">会員登録</li></a>
-            <!-- <li class="log"><a href="login.html">ログイン</a></li>
-            <li class="regi"><a href="before_register.html">会員登録</a></li> -->
-        </ul>
-    </div>
-    </p>
+
+    <h1>写真ギャラリー</h1>
+    <div class="gallery">
+        <!-- ここに画像を追加 -->
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <img src="images/photo3.jpg" alt="Photo 3">
     </div>
 
+    <div class="overlay" id="overlay">
+        <img id="overlayImage" src="" alt="拡大画像">
+    </div>
 
-    <p>
-    <div class = "other">
-        キャンペーン情報
-    </p>
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlayImage');
 
-    <p>
-        <ul class="campaign">
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam1">空の旅へGO!</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam2">美しい街並みを眺める</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam3">癒しの旅へ</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam4">自然と触れる</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam5">記憶に残る夏に</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam6">朝日を浴びる旅</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam7">歴史を感じる</li></a>
-            <a href="https://www.jal.co.jp/jp/ja/campaign/dom/"><li class="cam8">悠久の時間を過ごす</li></a>
-        </ul>
-    </p>
-</div>
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                overlayImage.src = image.src;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    </script>
 
 </body>
-
-<footer>
-    <!-- <h1><div>日本航空</div></h1> -->
-
-    TESTについて<br><br>
-    企業理念・会社案内<br>
-    安全・品質<br>
-    サステナビリティ<br>
-    IR情報<br>
-    学ぶ・楽しむ<br>
-    プレリリース<br>
-    採用情報<br>
-</footer>
-
+</html>
