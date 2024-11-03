@@ -48,4 +48,51 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9); /* 背景を暗く */
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; /* 他の要素の上に表示 */
+        }
+
+        .overlay img {
+            width: 80%; 
+            max-width: 800px; 
+            height: auto; 
+            border-radius: 10px; /* 角を丸く */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 影を追加 */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>写真ギャラリー</h1>
+    <div class="gallery">
+        <!-- ここに画像を追加 -->
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/P1011287.jpg" alt="Photo 2">
+        <!-- <img src="images/photo3.jpg" alt="Photo 3"> -->
+    </div>
+
+    <div class="overlay" id="overlay">
+        <img id="overlayImage" src="" alt="拡大画像">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlayImage');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                overlayImage.src = image.src;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
